@@ -1,0 +1,71 @@
+@page "/dashboard"
+@using Microsoft.AspNetCore.Components.Authorization
+@inject AuthenticationStateProvider AuthStateProvider
+@inject IAuthService AuthService
+@inject NavigationManager Navigation
+
+<PageTitle>Dashboard - CRC WebPortal</PageTitle>
+
+<div class="dashboard-container">
+    @if (currentUser != null)
+    {
+        <div class="dashboard-header">
+            <h1>Welcome, @currentUser.FirstName @currentUser.LastName!</h1>
+            <button class="btn-secondary" @onclick="HandleSignOut">Sign Out</button>
+        </div>
+    }
+    else
+    {
+        <div class="unauthorized">
+            <h2>Unauthorized Access</h2>
+            <p>Please sign in to access the dashboard.</p>
+            <button class="btn-primary" @onclick="NavigateToSignIn">Go to Sign In</button>
+        </div>
+    }
+</div>
+
+@code {
+    private User? currentUser;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var authState = await AuthStateProvider.GetAuthenticationStateAsync();
+        
+        if (authState.User.Identity?.IsAuthenticated == true)
+        {
+            // Extract user information from claims
+            var firstName = authState.User.FindFirst("firstName")?.Value ?? "User";
+            var lastName = authState.User.FindFirst("lastName")?.Value ?? "";
+            var email = authState.User.FindFirst("email")?.Value ?? "";
+            
+            currentUser = new User
+            {
+                FirstName = firstName,
+                LastName = lastName,
+                Email = email
+            };
+        }
+        else
+        {
+            Navigation.NavigateTo("/signin");
+        }
+    }
+
+    private async Task HandleSignOut()
+    {
+        await AuthService.SignOutAsync();
+        Navigation.NavigateTo("/signin");
+    }
+
+    private void NavigateToSignIn()
+    {
+        Navigation.NavigateTo("/signin");
+    }
+
+    public class User
+    {
+        public string FirstName { get; set; } = string.Empty;
+        public string LastName { get; set; } = string.Empty;
+        public string Email { get; set; } = string.Empty;
+    }
+}

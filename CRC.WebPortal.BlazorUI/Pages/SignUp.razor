@@ -1,0 +1,171 @@
+@page "/signup"
+@using CRC.WebPortal.Application.Common.Models
+@using CRC.WebPortal.BlazorUI.Models
+@inject IAuthService AuthService
+@inject NavigationManager Navigation
+
+<PageTitle>Sign Up - CRC WebPortal</PageTitle>
+
+<div class="auth-container">
+    <div class="auth-card">
+        <h2 class="auth-title">Sign Up</h2>
+
+        <EditForm Model="@signUpRequest" OnValidSubmit="@HandleSignUp" OnInvalidSubmit="@HandleInvalidSubmit">
+            <DataAnnotationsValidator />
+
+            <div class="form-row">
+                <div class="form-group">
+                    <InputText @bind-Value="signUpRequest.FirstName" 
+                               class="form-input" 
+                               placeholder="First Name" />
+                    <ValidationMessage For="@(() => signUpRequest.FirstName)" class="field-validation-error" />
+                </div>
+
+                <div class="form-group">
+                    <InputText @bind-Value="signUpRequest.LastName" 
+                               class="form-input" 
+                               placeholder="Last Name" />
+                    <ValidationMessage For="@(() => signUpRequest.LastName)" class="field-validation-error" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <InputText @bind-Value="signUpRequest.Email" 
+                           class="form-input" 
+                           placeholder="Email" 
+                           type="email" />
+                <ValidationMessage For="@(() => signUpRequest.Email)" class="field-validation-error" />
+            </div>
+
+            <div class="form-group">
+                <div class="password-input-wrapper">
+                    <InputText @bind-Value="signUpRequest.Password" 
+                               class="form-input" 
+                               placeholder="Password" 
+                               type="@(showPassword ? "text" : "password")" />
+                    <button type="button" class="password-toggle-btn" @onclick="TogglePasswordVisibility">
+                        @if (showPassword)
+                        {
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                <circle cx="12" cy="12" r="3"></circle>
+                            </svg>
+                        }
+                        else
+                        {
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path>
+                                <line x1="1" y1="1" x2="23" y2="23"></line>
+                            </svg>
+                        }
+                    </button>
+                </div>
+                <ValidationMessage For="@(() => signUpRequest.Password)" class="field-validation-error" />
+            </div>
+
+            <div class="form-group">
+                <div class="password-input-wrapper">
+                    <InputText @bind-Value="signUpRequest.ConfirmPassword" 
+                               class="form-input" 
+                               placeholder="Confirm Password" 
+                               type="@(showConfirmPassword ? "text" : "password")" />
+                    <button type="button" class="password-toggle-btn" @onclick="ToggleConfirmPasswordVisibility">
+                        @if (showConfirmPassword)
+                        {
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                <circle cx="12" cy="12" r="3"></circle>
+                            </svg>
+                        }
+                        else
+                        {
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path>
+                                <line x1="1" y1="1" x2="23" y2="23"></line>
+                            </svg>
+                        }
+                    </button>
+                </div>
+                <ValidationMessage For="@(() => signUpRequest.ConfirmPassword)" class="field-validation-error" />
+            </div>
+
+            @if (!string.IsNullOrEmpty(errorMessage))
+            {
+                <div class="server-error-alert">@errorMessage</div>
+            }
+
+            <button type="submit" class="btn-primary" disabled="@isLoading">
+                @if (isLoading)
+                {
+                    <span>Creating Account...</span>
+                }
+                else
+                {
+                    <span>Sign Up</span>
+                }
+            </button>
+        </EditForm>
+
+        <div class="divider">
+            <span>Or With</span>
+        </div>
+
+        <div class="auth-footer">
+            <span>Already have an account? </span>
+            <a href="/signin" class="auth-link">Sign In</a>
+        </div>
+    </div>
+</div>
+
+
+@code {
+    private SignUpRequest signUpRequest = new();
+    private bool showPassword = false;
+    private bool showConfirmPassword = false;
+    private bool isLoading = false;
+    private string errorMessage = string.Empty;
+
+    private void TogglePasswordVisibility()
+    {
+        showPassword = !showPassword;
+    }
+
+    private void ToggleConfirmPasswordVisibility()
+    {
+        showConfirmPassword = !showConfirmPassword;
+    }
+
+    private void HandleInvalidSubmit()
+    {
+        // Clear any server errors when form is invalid
+        errorMessage = string.Empty;
+    }
+
+    private async Task HandleSignUp()
+    {
+        isLoading = true;
+        errorMessage = string.Empty;
+
+        try
+        {
+            var user = await AuthService.SignUpAsync(signUpRequest.Email, signUpRequest.Password, signUpRequest.FirstName, signUpRequest.LastName);
+
+            if (user != null)
+            {
+                Navigation.NavigateTo("/dashboard", forceLoad: true);
+            }
+            else
+            {
+                errorMessage = "Sign up failed. Please try again.";
+            }
+        }
+        catch (Exception)
+        {
+            errorMessage = "An error occurred during sign up. Please try again.";
+        }
+        finally
+        {
+            isLoading = false;
+        }
+    }
+}

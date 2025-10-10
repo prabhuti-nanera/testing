@@ -1,0 +1,392 @@
+@page "/profile"
+@attribute [Authorize]
+@using CRC.WebPortal.BlazorUI.Models
+@inject IAuthService AuthService
+
+<PageTitle>Profile - CRC WebPortal</PageTitle>
+
+<div class="profile-container">
+    <div class="profile-header">
+        <h1>My Profile</h1>
+        <p class="text-muted">Manage your account information</p>
+    </div>
+
+    @if (currentUser != null)
+    {
+        <div class="profile-content">
+            <div class="profile-card">
+                <div class="profile-avatar">
+                    <div class="avatar-circle">
+                        @GetInitials(currentUser.FirstName, currentUser.LastName)
+                    </div>
+                </div>
+                
+                <div class="profile-info">
+                    <h2>@currentUser.FullName</h2>
+                    <p class="profile-email">@currentUser.Email</p>
+                    <span class="profile-status active">Active Account</span>
+                </div>
+            </div>
+
+            <div class="profile-details">
+                <div class="detail-section">
+                    <h3>Personal Information</h3>
+                    <div class="detail-grid">
+                        <div class="detail-item">
+                            <label>First Name</label>
+                            <span>@currentUser.FirstName</span>
+                        </div>
+                        <div class="detail-item">
+                            <label>Last Name</label>
+                            <span>@currentUser.LastName</span>
+                        </div>
+                        <div class="detail-item">
+                            <label>Email Address</label>
+                            <span>@currentUser.Email</span>
+                        </div>
+                        <div class="detail-item">
+                            <label>Account Status</label>
+                            <span class="status-badge active">
+                                @(currentUser.IsActive ? "Active" : "Inactive")
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="detail-section">
+                    <h3>Account Actions</h3>
+                    <div class="action-grid">
+                        <button class="action-card" @onclick="EditProfile">
+                            <div class="action-icon">✏️</div>
+                            <div class="action-content">
+                                <h4>Edit Profile</h4>
+                                <p>Update your personal information</p>
+                            </div>
+                        </button>
+                        
+                        <button class="action-card" @onclick="ChangePassword">
+                            <div class="action-icon">🔒</div>
+                            <div class="action-content">
+                                <h4>Change Password</h4>
+                                <p>Update your account password</p>
+                            </div>
+                        </button>
+                        
+                        <button class="action-card" @onclick="ViewSecurity">
+                            <div class="action-icon">🛡️</div>
+                            <div class="action-content">
+                                <h4>Security Settings</h4>
+                                <p>Manage your security preferences</p>
+                            </div>
+                        </button>
+                        
+                        <button class="action-card" @onclick="DownloadData">
+                            <div class="action-icon">📥</div>
+                            <div class="action-content">
+                                <h4>Download Data</h4>
+                                <p>Export your account data</p>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+    else if (isLoading)
+    {
+        <div class="loading-container">
+            <div class="spinner-border" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+            <p>Loading profile...</p>
+        </div>
+    }
+    else
+    {
+        <div class="error-container">
+            <p>Unable to load profile information.</p>
+            <button class="btn btn-primary" @onclick="LoadProfile">Retry</button>
+        </div>
+    }
+</div>
+
+<style>
+    .profile-container {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 30px;
+    }
+
+    .profile-header {
+        margin-bottom: 40px;
+    }
+
+    .profile-header h1 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: #333;
+        margin-bottom: 10px;
+    }
+
+    .profile-content {
+        display: grid;
+        gap: 30px;
+    }
+
+    .profile-card {
+        background: white;
+        border-radius: 15px;
+        padding: 40px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        display: flex;
+        align-items: center;
+        gap: 30px;
+    }
+
+    .profile-avatar {
+        flex-shrink: 0;
+    }
+
+    .avatar-circle {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 2rem;
+        font-weight: 700;
+        text-transform: uppercase;
+    }
+
+    .profile-info h2 {
+        margin: 0 0 10px 0;
+        font-size: 2rem;
+        font-weight: 600;
+        color: #333;
+    }
+
+    .profile-email {
+        margin: 0 0 15px 0;
+        color: #666;
+        font-size: 1.1rem;
+    }
+
+    .profile-status {
+        display: inline-block;
+        padding: 6px 12px;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        font-weight: 500;
+    }
+
+    .profile-status.active {
+        background-color: #d4edda;
+        color: #155724;
+    }
+
+    .profile-details {
+        background: white;
+        border-radius: 15px;
+        padding: 40px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .detail-section {
+        margin-bottom: 40px;
+    }
+
+    .detail-section:last-child {
+        margin-bottom: 0;
+    }
+
+    .detail-section h3 {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 25px;
+        padding-bottom: 15px;
+        border-bottom: 2px solid #f0f0f0;
+    }
+
+    .detail-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 25px;
+    }
+
+    .detail-item {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .detail-item label {
+        font-weight: 600;
+        color: #666;
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    .detail-item span {
+        font-size: 1.1rem;
+        color: #333;
+    }
+
+    .status-badge {
+        display: inline-block;
+        padding: 4px 10px;
+        border-radius: 15px;
+        font-size: 0.9rem;
+        font-weight: 500;
+    }
+
+    .status-badge.active {
+        background-color: #d4edda;
+        color: #155724;
+    }
+
+    .action-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
+    }
+
+    .action-card {
+        background: #f8f9fa;
+        border: 2px solid transparent;
+        border-radius: 12px;
+        padding: 25px;
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-align: left;
+    }
+
+    .action-card:hover {
+        background: white;
+        border-color: #667eea;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .action-icon {
+        font-size: 2rem;
+        flex-shrink: 0;
+    }
+
+    .action-content h4 {
+        margin: 0 0 5px 0;
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: #333;
+    }
+
+    .action-content p {
+        margin: 0;
+        color: #666;
+        font-size: 0.95rem;
+    }
+
+    .loading-container, .error-container {
+        text-align: center;
+        padding: 60px 20px;
+    }
+
+    .loading-container p, .error-container p {
+        margin-top: 20px;
+        color: #666;
+        font-size: 1.1rem;
+    }
+
+    @@media (max-width: 768px) {
+        .profile-container {
+            padding: 20px;
+        }
+
+        .profile-card {
+            flex-direction: column;
+            text-align: center;
+            padding: 30px 20px;
+        }
+
+        .profile-header h1 {
+            font-size: 2rem;
+        }
+
+        .detail-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .action-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .action-card {
+            padding: 20px;
+        }
+    }
+</style>
+
+@code {
+    private CRC.WebPortal.BlazorUI.Models.UserDto? currentUser;
+    private bool isLoading = true;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadProfile();
+    }
+
+    private async Task LoadProfile()
+    {
+        isLoading = true;
+        try
+        {
+            currentUser = await AuthService.GetCurrentUserAsync();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error loading profile: {ex.Message}");
+        }
+        finally
+        {
+            isLoading = false;
+        }
+    }
+
+    private string GetInitials(string firstName, string lastName)
+    {
+        var first = !string.IsNullOrEmpty(firstName) ? firstName[0].ToString() : "";
+        var last = !string.IsNullOrEmpty(lastName) ? lastName[0].ToString() : "";
+        return $"{first}{last}";
+    }
+
+    private void EditProfile()
+    {
+        // TODO: Implement edit profile functionality
+        Console.WriteLine("Edit Profile clicked");
+    }
+
+    private void ChangePassword()
+    {
+        // TODO: Implement change password functionality
+        Console.WriteLine("Change Password clicked");
+    }
+
+    private void ViewSecurity()
+    {
+        // TODO: Implement security settings functionality
+        Console.WriteLine("View Security clicked");
+    }
+
+    private void DownloadData()
+    {
+        // TODO: Implement download data functionality
+        Console.WriteLine("Download Data clicked");
+    }
+}
