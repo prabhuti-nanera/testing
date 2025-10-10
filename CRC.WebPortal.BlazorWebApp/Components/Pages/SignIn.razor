@@ -1,0 +1,162 @@
+@page "/"
+@page "/signin"
+@using CRC.WebPortal.BlazorWebApp.Models
+@using CRC.WebPortal.BlazorWebApp.Services
+@using System.ComponentModel.DataAnnotations
+@using Microsoft.AspNetCore.Components
+@inject IAuthService AuthService
+@inject NavigationManager Navigation
+
+<PageTitle>Sign In - CRC WebPortal</PageTitle>
+
+<div class="container-fluid vh-100 d-flex align-items-center justify-content-center" style="background-color: #f8f9fa;">
+    <div class="row w-100 justify-content-center">
+        <div class="col-md-5 col-lg-4">
+            <div class="card border-0 shadow-sm" style="border-radius: 12px;">
+                <div class="card-body p-5">
+                    <h2 class="text-center mb-4 fw-normal" style="color: #333; font-size: 28px;">Sign In</h2>
+                    
+                    <EditForm Model="@signinData" OnValidSubmit="@HandleValidSubmit" OnInvalidSubmit="@HandleInvalidSubmit" FormName="SignInForm">
+                        <DataAnnotationsValidator />
+                        
+                        <div class="mb-3">
+                            <InputText @bind-Value="signinData.Email" 
+                                      class="form-control form-control-lg" 
+                                      placeholder="Email" 
+                                      type="email"
+                                      style="border: 1px solid #ddd; border-radius: 8px; padding: 12px 16px; font-size: 14px;" />
+                            <ValidationMessage For="@(() => signinData.Email)" class="text-danger small mt-1" />
+                        </div>
+
+                        <div class="mb-3 position-relative">
+                            <InputText @bind-Value="signinData.Password" 
+                                      class="form-control form-control-lg" 
+                                      placeholder="Password" 
+                                      type="@(showPassword ? "text" : "password")"
+                                      style="border: 1px solid #ddd; border-radius: 8px; padding: 12px 45px 12px 16px; font-size: 14px;" />
+                            <button type="button" 
+                                    class="btn btn-link position-absolute end-0 top-50 translate-middle-y me-2 p-0" 
+                                    style="border: none; background: none; color: #6c757d;"
+                                    @onclick="TogglePasswordVisibility">
+                                <i class="@(showPassword ? "bi bi-eye-slash" : "bi bi-eye")"></i>
+                            </button>
+                            <ValidationMessage For="@(() => signinData.Password)" class="text-danger small mt-1" />
+                        </div>
+
+                        <div class="form-check mb-4">
+                            <InputCheckbox @bind-Value="signinData.RememberMe" class="form-check-input" id="rememberMe" />
+                            <label class="form-check-label" for="rememberMe" style="font-size: 14px; color: #6c757d;">
+                                Remember me
+                            </label>
+                        </div>
+
+                        @if (!string.IsNullOrEmpty(errorMessage))
+                        {
+                            <div class="alert alert-danger mb-3" role="alert" style="border-radius: 8px; font-size: 14px;">
+                                @errorMessage
+                            </div>
+                        }
+
+                        @if (!string.IsNullOrEmpty(successMessage))
+                        {
+                            <div class="alert alert-success mb-3" role="alert" style="border-radius: 8px; font-size: 14px;">
+                                @successMessage
+                            </div>
+                        }
+
+                        <button type="submit" 
+                                class="btn btn-primary w-100 mb-4" 
+                                disabled="@isLoading"
+                                style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border: none; border-radius: 8px; padding: 12px; font-size: 16px; font-weight: 500;">
+                            @if (isLoading)
+                            {
+                                <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+                                <span>Signing In...</span>
+                            }
+                            else
+                            {
+                                <span>Sign In</span>
+                            }
+                        </button>
+
+                        <div class="text-center mb-3">
+                            <a href="/forgot-password" style="color: #667eea; text-decoration: none; font-size: 14px;">Forgot your password?</a>
+                        </div>
+
+                        <div class="text-center mb-3">
+                            <span style="color: #6c757d; font-size: 14px;">Or With</span>
+                        </div>
+
+                        <div class="text-center">
+                            <span style="color: #6c757d; font-size: 14px;">Don't have an account? </span>
+                            <a href="/signup" style="color: #667eea; text-decoration: none; font-weight: 500;">Create Account</a>
+                        </div>
+                    </EditForm>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    // Simple data structure for UI - no command logic here
+    [SupplyParameterFromForm]
+    private SigninData signinData { get; set; } = default!;
+
+    protected override void OnInitialized()
+    {
+        signinData ??= new SigninData();
+    }
+    private string errorMessage = string.Empty;
+    private string successMessage = string.Empty;
+    private bool isLoading = false;
+    private bool showPassword = false;
+
+    /// <summary>
+    /// Handles form submission - sends data to API, API creates commands internally
+    /// Clean Architecture: UI only sends data, backend handles commands
+    /// </summary>
+    private async Task HandleValidSubmit()
+    {
+        errorMessage = string.Empty;
+        successMessage = string.Empty;
+        isLoading = true;
+
+        try
+        {
+            // UI just calls the service like a function - clean separation
+            var result = await AuthService.SignInAsync(signinData);
+            
+            if (result.IsSuccess)
+            {
+                successMessage = "Sign in successful! Redirecting...";
+                await Task.Delay(2000);
+                Navigation.NavigateTo("/home");
+            }
+            else
+            {
+                errorMessage = result.Message ?? "Sign in failed. Please try again.";
+            }
+        }
+        catch (Exception ex)
+        {
+            errorMessage = $"An error occurred: {ex.Message}";
+        }
+        finally
+        {
+            isLoading = false;
+        }
+    }
+
+    private void HandleInvalidSubmit()
+    {
+        errorMessage = "Please correct the errors in the form.";
+        successMessage = string.Empty;
+    }
+
+    private void TogglePasswordVisibility()
+    {
+        showPassword = !showPassword;
+    }
+}
+
