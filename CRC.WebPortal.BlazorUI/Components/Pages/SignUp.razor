@@ -1,0 +1,73 @@
+﻿@page "/signup"
+@using CRC.WebPortal.Application.Common.Models
+@using CRC.WebPortal.BlazorUI.Models
+@inject IAuthService AuthService
+@inject NavigationManager Navigation
+
+<PageTitle>Sign Up - CRC WebPortal</PageTitle>
+
+<div class="auth-container">
+    <div class="auth-card">
+        <h2 class="auth-title">Sign Up</h2>
+        <p class="auth-subtitle">Create your account to get started.</p>
+
+        <EditForm Model="@signUpRequest" OnValidSubmit="@HandleValidSubmit" OnInvalidSubmit="@HandleInvalidSubmit">
+            <DataAnnotationsValidator />
+            <div class="form-group">
+                <InputText @bind-Value="signUpRequest.Email" class="form-input" placeholder="Email" type="email" />
+                <ValidationMessage For="@(() => signUpRequest.Email)" class="field-validation-error" />
+            </div>
+            <div class="form-group">
+                <InputText @bind-Value="signUpRequest.FirstName" class="form-input" placeholder="First Name" />
+                <ValidationMessage For="@(() => signUpRequest.FirstName)" class="field-validation-error" />
+            </div>
+            <div class="form-group">
+                <InputText @bind-Value="signUpRequest.LastName" class="form-input" placeholder="Last Name" />
+                <ValidationMessage For="@(() => signUpRequest.LastName)" class="field-validation-error" />
+            </div>
+            <div class="form-group">
+                <InputText @bind-Value="signUpRequest.Password" class="form-input" placeholder="Password" type="password" />
+                <ValidationMessage For="@(() => signUpRequest.Password)" class="field-validation-error" />
+            </div>
+            <div class="form-group">
+                <InputText @bind-Value="signUpRequest.ConfirmPassword" class="form-input" placeholder="Confirm Password" type="password" />
+                <ValidationMessage For="@(() => signUpRequest.ConfirmPassword)" class="field-validation-error" />
+            </div>
+
+            @if (!string.IsNullOrEmpty(errorMessage))
+            {
+                <div class="alert alert-danger mt-3 mb-0">@errorMessage</div>
+            }
+
+            <button type="submit" class="btn btn-primary btn-block mt-3">Sign Up</button>
+        </EditForm>
+
+        <div class="auth-links">
+            <a href="/" class="text-link">Already have an account? Sign In</a>
+        </div>
+    </div>
+</div>
+
+@code {
+    private SignUpRequest signUpRequest = new();
+    private string errorMessage = string.Empty;
+
+    private async Task HandleValidSubmit()
+    {
+        errorMessage = string.Empty;
+        var result = await AuthService.SignUpAsync(signUpRequest);
+        if (result.IsSuccess)
+        {
+            Navigation.NavigateTo("/");
+        }
+        else
+        {
+            errorMessage = result.Message ?? "Registration failed. Please try again.";
+        }
+    }
+
+    private void HandleInvalidSubmit()
+    {
+        errorMessage = "Please correct the errors in the form.";
+    }
+}

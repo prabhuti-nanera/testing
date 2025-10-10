@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "+/ZyMnitsNM=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Admin\\CRC\\CRC.WebPortal\\CRC.WebPortal.BlazorUI\\CRC.WebPortal.BlazorUI.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Admin\\.nuget\\packages\\blazored.localstorage\\4.5.0\\blazored.localstorage.4.5.0.nupkg.sha512",
+    "C:\\Users\\Admin\\.nuget\\packages\\fluentvalidation\\12.0.0\\fluentvalidation.12.0.0.nupkg.sha512",
+    "C:\\Users\\Admin\\.nuget\\packages\\microsoft.aspnetcore.app.internal.assets\\10.0.0-rc.1.25451.107\\microsoft.aspnetcore.app.internal.assets.10.0.0-rc.1.25451.107.nupkg.sha512"
+  ],
+  "logs": []
+}

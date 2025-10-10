@@ -1,0 +1,525 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Admin\\CRC\\CRC.WebPortal\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{68358272-D9FC-428F-9749-6941EDF3E4DF}|CRC.WebPortal.BlazorUI\\CRC.WebPortal.BlazorUI.csproj|c:\\users\\admin\\crc\\crc.webportal\\crc.webportal.blazorui\\services\\customauthstateprovider.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{68358272-D9FC-428F-9749-6941EDF3E4DF}|CRC.WebPortal.BlazorUI\\CRC.WebPortal.BlazorUI.csproj|solutionrelative:crc.webportal.blazorui\\services\\customauthstateprovider.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{68358272-D9FC-428F-9749-6941EDF3E4DF}|CRC.WebPortal.BlazorUI\\CRC.WebPortal.BlazorUI.csproj|c:\\users\\admin\\crc\\crc.webportal\\crc.webportal.blazorui\\components\\_imports.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{68358272-D9FC-428F-9749-6941EDF3E4DF}|CRC.WebPortal.BlazorUI\\CRC.WebPortal.BlazorUI.csproj|solutionrelative:crc.webportal.blazorui\\components\\_imports.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{68358272-D9FC-428F-9749-6941EDF3E4DF}|CRC.WebPortal.BlazorUI\\CRC.WebPortal.BlazorUI.csproj|c:\\users\\admin\\crc\\crc.webportal\\crc.webportal.blazorui\\components\\app.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{68358272-D9FC-428F-9749-6941EDF3E4DF}|CRC.WebPortal.BlazorUI\\CRC.WebPortal.BlazorUI.csproj|solutionrelative:crc.webportal.blazorui\\components\\app.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{68358272-D9FC-428F-9749-6941EDF3E4DF}|CRC.WebPortal.BlazorUI\\CRC.WebPortal.BlazorUI.csproj|c:\\users\\admin\\crc\\crc.webportal\\crc.webportal.blazorui\\components\\routes.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{68358272-D9FC-428F-9749-6941EDF3E4DF}|CRC.WebPortal.BlazorUI\\CRC.WebPortal.BlazorUI.csproj|solutionrelative:crc.webportal.blazorui\\components\\routes.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{68358272-D9FC-428F-9749-6941EDF3E4DF}|CRC.WebPortal.BlazorUI\\CRC.WebPortal.BlazorUI.csproj|c:\\users\\admin\\crc\\crc.webportal\\crc.webportal.blazorui\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{68358272-D9FC-428F-9749-6941EDF3E4DF}|CRC.WebPortal.BlazorUI\\CRC.WebPortal.BlazorUI.csproj|solutionrelative:crc.webportal.blazorui\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{68358272-D9FC-428F-9749-6941EDF3E4DF}|CRC.WebPortal.BlazorUI\\CRC.WebPortal.BlazorUI.csproj|c:\\users\\admin\\crc\\crc.webportal\\crc.webportal.blazorui\\components\\pages\\signup.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{68358272-D9FC-428F-9749-6941EDF3E4DF}|CRC.WebPortal.BlazorUI\\CRC.WebPortal.BlazorUI.csproj|solutionrelative:crc.webportal.blazorui\\components\\pages\\signup.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{68358272-D9FC-428F-9749-6941EDF3E4DF}|CRC.WebPortal.BlazorUI\\CRC.WebPortal.BlazorUI.csproj|c:\\users\\admin\\crc\\crc.webportal\\crc.webportal.blazorui\\services\\iauthservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{68358272-D9FC-428F-9749-6941EDF3E4DF}|CRC.WebPortal.BlazorUI\\CRC.WebPortal.BlazorUI.csproj|solutionrelative:crc.webportal.blazorui\\services\\iauthservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{68358272-D9FC-428F-9749-6941EDF3E4DF}|CRC.WebPortal.BlazorUI\\CRC.WebPortal.BlazorUI.csproj|c:\\users\\admin\\crc\\crc.webportal\\crc.webportal.blazorui\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{68358272-D9FC-428F-9749-6941EDF3E4DF}|CRC.WebPortal.BlazorUI\\CRC.WebPortal.BlazorUI.csproj|solutionrelative:crc.webportal.blazorui\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{68358272-D9FC-428F-9749-6941EDF3E4DF}|CRC.WebPortal.BlazorUI\\CRC.WebPortal.BlazorUI.csproj|c:\\users\\admin\\crc\\crc.webportal\\crc.webportal.blazorui\\validators\\signuprequestvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{68358272-D9FC-428F-9749-6941EDF3E4DF}|CRC.WebPortal.BlazorUI\\CRC.WebPortal.BlazorUI.csproj|solutionrelative:crc.webportal.blazorui\\validators\\signuprequestvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{68358272-D9FC-428F-9749-6941EDF3E4DF}|CRC.WebPortal.BlazorUI\\CRC.WebPortal.BlazorUI.csproj|c:\\users\\admin\\crc\\crc.webportal\\crc.webportal.blazorui\\models\\signuprequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{68358272-D9FC-428F-9749-6941EDF3E4DF}|CRC.WebPortal.BlazorUI\\CRC.WebPortal.BlazorUI.csproj|solutionrelative:crc.webportal.blazorui\\models\\signuprequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{81E04A1C-719C-4455-9BDF-4C737528CA22}|CRC.WebPortal.API\\CRC.WebPortal.API.csproj|c:\\users\\admin\\crc\\crc.webportal\\crc.webportal.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{81E04A1C-719C-4455-9BDF-4C737528CA22}|CRC.WebPortal.API\\CRC.WebPortal.API.csproj|solutionrelative:crc.webportal.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{81E04A1C-719C-4455-9BDF-4C737528CA22}|CRC.WebPortal.API\\CRC.WebPortal.API.csproj|c:\\users\\admin\\crc\\crc.webportal\\crc.webportal.api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{81E04A1C-719C-4455-9BDF-4C737528CA22}|CRC.WebPortal.API\\CRC.WebPortal.API.csproj|solutionrelative:crc.webportal.api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{81E04A1C-719C-4455-9BDF-4C737528CA22}|CRC.WebPortal.API\\CRC.WebPortal.API.csproj|c:\\users\\admin\\crc\\crc.webportal\\crc.webportal.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{81E04A1C-719C-4455-9BDF-4C737528CA22}|CRC.WebPortal.API\\CRC.WebPortal.API.csproj|solutionrelative:crc.webportal.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BE75999E-4117-4802-B004-7A9B578978F0}|CRC.WebPortal.Infrastructure\\CRC.WebPortal.Infrastructure.csproj|c:\\users\\admin\\crc\\crc.webportal\\crc.webportal.infrastructure\\services\\tokenservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BE75999E-4117-4802-B004-7A9B578978F0}|CRC.WebPortal.Infrastructure\\CRC.WebPortal.Infrastructure.csproj|solutionrelative:crc.webportal.infrastructure\\services\\tokenservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BE75999E-4117-4802-B004-7A9B578978F0}|CRC.WebPortal.Infrastructure\\CRC.WebPortal.Infrastructure.csproj|c:\\users\\admin\\crc\\crc.webportal\\crc.webportal.infrastructure\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BE75999E-4117-4802-B004-7A9B578978F0}|CRC.WebPortal.Infrastructure\\CRC.WebPortal.Infrastructure.csproj|solutionrelative:crc.webportal.infrastructure\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BE75999E-4117-4802-B004-7A9B578978F0}|CRC.WebPortal.Infrastructure\\CRC.WebPortal.Infrastructure.csproj|c:\\users\\admin\\crc\\crc.webportal\\crc.webportal.infrastructure\\repositories\\unitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BE75999E-4117-4802-B004-7A9B578978F0}|CRC.WebPortal.Infrastructure\\CRC.WebPortal.Infrastructure.csproj|solutionrelative:crc.webportal.infrastructure\\repositories\\unitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BE75999E-4117-4802-B004-7A9B578978F0}|CRC.WebPortal.Infrastructure\\CRC.WebPortal.Infrastructure.csproj|c:\\users\\admin\\crc\\crc.webportal\\crc.webportal.infrastructure\\repositories\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BE75999E-4117-4802-B004-7A9B578978F0}|CRC.WebPortal.Infrastructure\\CRC.WebPortal.Infrastructure.csproj|solutionrelative:crc.webportal.infrastructure\\repositories\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BE75999E-4117-4802-B004-7A9B578978F0}|CRC.WebPortal.Infrastructure\\CRC.WebPortal.Infrastructure.csproj|c:\\users\\admin\\crc\\crc.webportal\\crc.webportal.infrastructure\\repositories\\repository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BE75999E-4117-4802-B004-7A9B578978F0}|CRC.WebPortal.Infrastructure\\CRC.WebPortal.Infrastructure.csproj|solutionrelative:crc.webportal.infrastructure\\repositories\\repository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BE75999E-4117-4802-B004-7A9B578978F0}|CRC.WebPortal.Infrastructure\\CRC.WebPortal.Infrastructure.csproj|c:\\users\\admin\\crc\\crc.webportal\\crc.webportal.infrastructure\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BE75999E-4117-4802-B004-7A9B578978F0}|CRC.WebPortal.Infrastructure\\CRC.WebPortal.Infrastructure.csproj|solutionrelative:crc.webportal.infrastructure\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4B944BAF-CB34-45AE-AC3A-4563B7AD54EB}|CRC.WebPortal.Application\\CRC.WebPortal.Application.csproj|c:\\users\\admin\\crc\\crc.webportal\\crc.webportal.application\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4B944BAF-CB34-45AE-AC3A-4563B7AD54EB}|CRC.WebPortal.Application\\CRC.WebPortal.Application.csproj|solutionrelative:crc.webportal.application\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4B944BAF-CB34-45AE-AC3A-4563B7AD54EB}|CRC.WebPortal.Application\\CRC.WebPortal.Application.csproj|c:\\users\\admin\\crc\\crc.webportal\\crc.webportal.application\\mappings\\mappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4B944BAF-CB34-45AE-AC3A-4563B7AD54EB}|CRC.WebPortal.Application\\CRC.WebPortal.Application.csproj|solutionrelative:crc.webportal.application\\mappings\\mappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4B944BAF-CB34-45AE-AC3A-4563B7AD54EB}|CRC.WebPortal.Application\\CRC.WebPortal.Application.csproj|c:\\users\\admin\\crc\\crc.webportal\\crc.webportal.application\\interfaces\\itokenservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4B944BAF-CB34-45AE-AC3A-4563B7AD54EB}|CRC.WebPortal.Application\\CRC.WebPortal.Application.csproj|solutionrelative:crc.webportal.application\\interfaces\\itokenservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4B944BAF-CB34-45AE-AC3A-4563B7AD54EB}|CRC.WebPortal.Application\\CRC.WebPortal.Application.csproj|c:\\users\\admin\\crc\\crc.webportal\\crc.webportal.application\\common\\features\\auth\\commands\\signup\\signupcommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4B944BAF-CB34-45AE-AC3A-4563B7AD54EB}|CRC.WebPortal.Application\\CRC.WebPortal.Application.csproj|solutionrelative:crc.webportal.application\\common\\features\\auth\\commands\\signup\\signupcommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4B944BAF-CB34-45AE-AC3A-4563B7AD54EB}|CRC.WebPortal.Application\\CRC.WebPortal.Application.csproj|c:\\users\\admin\\crc\\crc.webportal\\crc.webportal.application\\common\\features\\auth\\commands\\signup\\signupcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4B944BAF-CB34-45AE-AC3A-4563B7AD54EB}|CRC.WebPortal.Application\\CRC.WebPortal.Application.csproj|solutionrelative:crc.webportal.application\\common\\features\\auth\\commands\\signup\\signupcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4B944BAF-CB34-45AE-AC3A-4563B7AD54EB}|CRC.WebPortal.Application\\CRC.WebPortal.Application.csproj|c:\\users\\admin\\crc\\crc.webportal\\crc.webportal.application\\common\\models\\userdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4B944BAF-CB34-45AE-AC3A-4563B7AD54EB}|CRC.WebPortal.Application\\CRC.WebPortal.Application.csproj|solutionrelative:crc.webportal.application\\common\\models\\userdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4B944BAF-CB34-45AE-AC3A-4563B7AD54EB}|CRC.WebPortal.Application\\CRC.WebPortal.Application.csproj|c:\\users\\admin\\crc\\crc.webportal\\crc.webportal.application\\common\\models\\authresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4B944BAF-CB34-45AE-AC3A-4563B7AD54EB}|CRC.WebPortal.Application\\CRC.WebPortal.Application.csproj|solutionrelative:crc.webportal.application\\common\\models\\authresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{33DD8991-0F94-41A5-BD30-7741D4DB4820}|CRC.WebPortal.Domain\\CRC.WebPortal.Domain.csproj|c:\\users\\admin\\crc\\crc.webportal\\crc.webportal.domain\\interfaces\\iunitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{33DD8991-0F94-41A5-BD30-7741D4DB4820}|CRC.WebPortal.Domain\\CRC.WebPortal.Domain.csproj|solutionrelative:crc.webportal.domain\\interfaces\\iunitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{33DD8991-0F94-41A5-BD30-7741D4DB4820}|CRC.WebPortal.Domain\\CRC.WebPortal.Domain.csproj|c:\\users\\admin\\crc\\crc.webportal\\crc.webportal.domain\\interfaces\\iuserrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{33DD8991-0F94-41A5-BD30-7741D4DB4820}|CRC.WebPortal.Domain\\CRC.WebPortal.Domain.csproj|solutionrelative:crc.webportal.domain\\interfaces\\iuserrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{33DD8991-0F94-41A5-BD30-7741D4DB4820}|CRC.WebPortal.Domain\\CRC.WebPortal.Domain.csproj|c:\\users\\admin\\crc\\crc.webportal\\crc.webportal.domain\\entities\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{33DD8991-0F94-41A5-BD30-7741D4DB4820}|CRC.WebPortal.Domain\\CRC.WebPortal.Domain.csproj|solutionrelative:crc.webportal.domain\\entities\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 8,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "_Imports.razor",
+              "DocumentMoniker": "C:\\Users\\Admin\\CRC\\CRC.WebPortal\\CRC.WebPortal.BlazorUI\\Components\\_Imports.razor",
+              "RelativeDocumentMoniker": "CRC.WebPortal.BlazorUI\\Components\\_Imports.razor",
+              "ToolTip": "C:\\Users\\Admin\\CRC\\CRC.WebPortal\\CRC.WebPortal.BlazorUI\\Components\\_Imports.razor",
+              "RelativeToolTip": "CRC.WebPortal.BlazorUI\\Components\\_Imports.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-09T03:23:04.459Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "App.razor",
+              "DocumentMoniker": "C:\\Users\\Admin\\CRC\\CRC.WebPortal\\CRC.WebPortal.BlazorUI\\Components\\App.razor",
+              "RelativeDocumentMoniker": "CRC.WebPortal.BlazorUI\\Components\\App.razor",
+              "ToolTip": "C:\\Users\\Admin\\CRC\\CRC.WebPortal\\CRC.WebPortal.BlazorUI\\Components\\App.razor",
+              "RelativeToolTip": "CRC.WebPortal.BlazorUI\\Components\\App.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-09T03:22:59.496Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Routes.razor",
+              "DocumentMoniker": "C:\\Users\\Admin\\CRC\\CRC.WebPortal\\CRC.WebPortal.BlazorUI\\Components\\Routes.razor",
+              "RelativeDocumentMoniker": "CRC.WebPortal.BlazorUI\\Components\\Routes.razor",
+              "ToolTip": "C:\\Users\\Admin\\CRC\\CRC.WebPortal\\CRC.WebPortal.BlazorUI\\Components\\Routes.razor",
+              "RelativeToolTip": "CRC.WebPortal.BlazorUI\\Components\\Routes.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-09T03:22:56.619Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\CRC\\CRC.WebPortal\\CRC.WebPortal.BlazorUI\\Program.cs",
+              "RelativeDocumentMoniker": "CRC.WebPortal.BlazorUI\\Program.cs",
+              "ToolTip": "C:\\Users\\Admin\\CRC\\CRC.WebPortal\\CRC.WebPortal.BlazorUI\\Program.cs",
+              "RelativeToolTip": "CRC.WebPortal.BlazorUI\\Program.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAADcAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-09T03:16:16.911Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "SignUp.razor",
+              "DocumentMoniker": "C:\\Users\\Admin\\CRC\\CRC.WebPortal\\CRC.WebPortal.BlazorUI\\Components\\Pages\\SignUp.razor",
+              "RelativeDocumentMoniker": "CRC.WebPortal.BlazorUI\\Components\\Pages\\SignUp.razor",
+              "ToolTip": "C:\\Users\\Admin\\CRC\\CRC.WebPortal\\CRC.WebPortal.BlazorUI\\Components\\Pages\\SignUp.razor",
+              "RelativeToolTip": "CRC.WebPortal.BlazorUI\\Components\\Pages\\SignUp.razor",
+              "ViewState": "AgIAACoAAAAAAAAAAAAAAEgAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-09T03:15:52.244Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "CustomAuthStateProvider.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\CRC\\CRC.WebPortal\\CRC.WebPortal.BlazorUI\\Services\\CustomAuthStateProvider.cs",
+              "RelativeDocumentMoniker": "CRC.WebPortal.BlazorUI\\Services\\CustomAuthStateProvider.cs",
+              "ToolTip": "C:\\Users\\Admin\\CRC\\CRC.WebPortal\\CRC.WebPortal.BlazorUI\\Services\\CustomAuthStateProvider.cs",
+              "RelativeToolTip": "CRC.WebPortal.BlazorUI\\Services\\CustomAuthStateProvider.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAAAYwCQAAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-09T03:14:06.442Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "AuthService.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\CRC\\CRC.WebPortal\\CRC.WebPortal.BlazorUI\\Services\\AuthService.cs",
+              "RelativeDocumentMoniker": "CRC.WebPortal.BlazorUI\\Services\\AuthService.cs",
+              "ToolTip": "C:\\Users\\Admin\\CRC\\CRC.WebPortal\\CRC.WebPortal.BlazorUI\\Services\\AuthService.cs",
+              "RelativeToolTip": "CRC.WebPortal.BlazorUI\\Services\\AuthService.cs",
+              "ViewState": "AgIAABEAAAAAAAAAAAAcwDAAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-09T03:13:22.99Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "IAuthService.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\CRC\\CRC.WebPortal\\CRC.WebPortal.BlazorUI\\Services\\IAuthService.cs",
+              "RelativeDocumentMoniker": "CRC.WebPortal.BlazorUI\\Services\\IAuthService.cs",
+              "ToolTip": "C:\\Users\\Admin\\CRC\\CRC.WebPortal\\CRC.WebPortal.BlazorUI\\Services\\IAuthService.cs",
+              "RelativeToolTip": "CRC.WebPortal.BlazorUI\\Services\\IAuthService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-09T03:12:54.01Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "SignUpRequestValidator.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\CRC\\CRC.WebPortal\\CRC.WebPortal.BlazorUI\\Validators\\SignUpRequestValidator.cs",
+              "RelativeDocumentMoniker": "CRC.WebPortal.BlazorUI\\Validators\\SignUpRequestValidator.cs",
+              "ToolTip": "C:\\Users\\Admin\\CRC\\CRC.WebPortal\\CRC.WebPortal.BlazorUI\\Validators\\SignUpRequestValidator.cs",
+              "RelativeToolTip": "CRC.WebPortal.BlazorUI\\Validators\\SignUpRequestValidator.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-09T03:12:12.256Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "SignUpRequest.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\CRC\\CRC.WebPortal\\CRC.WebPortal.BlazorUI\\Models\\SignUpRequest.cs",
+              "RelativeDocumentMoniker": "CRC.WebPortal.BlazorUI\\Models\\SignUpRequest.cs",
+              "ToolTip": "C:\\Users\\Admin\\CRC\\CRC.WebPortal\\CRC.WebPortal.BlazorUI\\Models\\SignUpRequest.cs",
+              "RelativeToolTip": "CRC.WebPortal.BlazorUI\\Models\\SignUpRequest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-09T03:11:37.16Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\CRC\\CRC.WebPortal\\CRC.WebPortal.API\\Program.cs",
+              "RelativeDocumentMoniker": "CRC.WebPortal.API\\Program.cs",
+              "ToolTip": "C:\\Users\\Admin\\CRC\\CRC.WebPortal\\CRC.WebPortal.API\\Program.cs",
+              "RelativeToolTip": "CRC.WebPortal.API\\Program.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAACMAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-09T03:08:44.561Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\CRC\\CRC.WebPortal\\CRC.WebPortal.API\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "CRC.WebPortal.API\\Controllers\\AuthController.cs",
+              "ToolTip": "C:\\Users\\Admin\\CRC\\CRC.WebPortal\\CRC.WebPortal.API\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "CRC.WebPortal.API\\Controllers\\AuthController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-09T03:08:30.792Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\Admin\\CRC\\CRC.WebPortal\\CRC.WebPortal.API\\appsettings.json",
+              "RelativeDocumentMoniker": "CRC.WebPortal.API\\appsettings.json",
+              "ToolTip": "C:\\Users\\Admin\\CRC\\CRC.WebPortal\\CRC.WebPortal.API\\appsettings.json",
+              "RelativeToolTip": "CRC.WebPortal.API\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAABiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-10-09T03:06:08.675Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "DependencyInjection.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\CRC\\CRC.WebPortal\\CRC.WebPortal.Infrastructure\\DependencyInjection.cs",
+              "RelativeDocumentMoniker": "CRC.WebPortal.Infrastructure\\DependencyInjection.cs",
+              "ToolTip": "C:\\Users\\Admin\\CRC\\CRC.WebPortal\\CRC.WebPortal.Infrastructure\\DependencyInjection.cs",
+              "RelativeToolTip": "CRC.WebPortal.Infrastructure\\DependencyInjection.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-09T03:05:37.62Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "TokenService.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\CRC\\CRC.WebPortal\\CRC.WebPortal.Infrastructure\\Services\\TokenService.cs",
+              "RelativeDocumentMoniker": "CRC.WebPortal.Infrastructure\\Services\\TokenService.cs",
+              "ToolTip": "C:\\Users\\Admin\\CRC\\CRC.WebPortal\\CRC.WebPortal.Infrastructure\\Services\\TokenService.cs",
+              "RelativeToolTip": "CRC.WebPortal.Infrastructure\\Services\\TokenService.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAxwDMAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-09T03:04:55.597Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "UnitOfWork.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\CRC\\CRC.WebPortal\\CRC.WebPortal.Infrastructure\\Repositories\\UnitOfWork.cs",
+              "RelativeDocumentMoniker": "CRC.WebPortal.Infrastructure\\Repositories\\UnitOfWork.cs",
+              "ToolTip": "C:\\Users\\Admin\\CRC\\CRC.WebPortal\\CRC.WebPortal.Infrastructure\\Repositories\\UnitOfWork.cs",
+              "RelativeToolTip": "CRC.WebPortal.Infrastructure\\Repositories\\UnitOfWork.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-09T03:04:00.671Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "UserRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\CRC\\CRC.WebPortal\\CRC.WebPortal.Infrastructure\\Repositories\\UserRepository.cs",
+              "RelativeDocumentMoniker": "CRC.WebPortal.Infrastructure\\Repositories\\UserRepository.cs",
+              "ToolTip": "C:\\Users\\Admin\\CRC\\CRC.WebPortal\\CRC.WebPortal.Infrastructure\\Repositories\\UserRepository.cs",
+              "RelativeToolTip": "CRC.WebPortal.Infrastructure\\Repositories\\UserRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-09T03:03:27.001Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "Repository.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\CRC\\CRC.WebPortal\\CRC.WebPortal.Infrastructure\\Repositories\\Repository.cs",
+              "RelativeDocumentMoniker": "CRC.WebPortal.Infrastructure\\Repositories\\Repository.cs",
+              "ToolTip": "C:\\Users\\Admin\\CRC\\CRC.WebPortal\\CRC.WebPortal.Infrastructure\\Repositories\\Repository.cs",
+              "RelativeToolTip": "CRC.WebPortal.Infrastructure\\Repositories\\Repository.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAACAAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-09T03:02:54.316Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "ApplicationDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\CRC\\CRC.WebPortal\\CRC.WebPortal.Infrastructure\\Data\\ApplicationDbContext.cs",
+              "RelativeDocumentMoniker": "CRC.WebPortal.Infrastructure\\Data\\ApplicationDbContext.cs",
+              "ToolTip": "C:\\Users\\Admin\\CRC\\CRC.WebPortal\\CRC.WebPortal.Infrastructure\\Data\\ApplicationDbContext.cs",
+              "RelativeToolTip": "CRC.WebPortal.Infrastructure\\Data\\ApplicationDbContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-09T03:02:02.289Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "DependencyInjection.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\CRC\\CRC.WebPortal\\CRC.WebPortal.Application\\DependencyInjection.cs",
+              "RelativeDocumentMoniker": "CRC.WebPortal.Application\\DependencyInjection.cs",
+              "ToolTip": "C:\\Users\\Admin\\CRC\\CRC.WebPortal\\CRC.WebPortal.Application\\DependencyInjection.cs",
+              "RelativeToolTip": "CRC.WebPortal.Application\\DependencyInjection.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-09T02:59:53.713Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "MappingProfile.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\CRC\\CRC.WebPortal\\CRC.WebPortal.Application\\Mappings\\MappingProfile.cs",
+              "RelativeDocumentMoniker": "CRC.WebPortal.Application\\Mappings\\MappingProfile.cs",
+              "ToolTip": "C:\\Users\\Admin\\CRC\\CRC.WebPortal\\CRC.WebPortal.Application\\Mappings\\MappingProfile.cs",
+              "RelativeToolTip": "CRC.WebPortal.Application\\Mappings\\MappingProfile.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-09T02:59:24.722Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "ITokenService.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\CRC\\CRC.WebPortal\\CRC.WebPortal.Application\\Interfaces\\ITokenService.cs",
+              "RelativeDocumentMoniker": "CRC.WebPortal.Application\\Interfaces\\ITokenService.cs",
+              "ToolTip": "C:\\Users\\Admin\\CRC\\CRC.WebPortal\\CRC.WebPortal.Application\\Interfaces\\ITokenService.cs",
+              "RelativeToolTip": "CRC.WebPortal.Application\\Interfaces\\ITokenService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-09T02:58:51.441Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "SignUpCommandHandler.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\CRC\\CRC.WebPortal\\CRC.WebPortal.Application\\Common\\Features\\Auth\\Commands\\SignUp\\SignUpCommandHandler.cs",
+              "RelativeDocumentMoniker": "CRC.WebPortal.Application\\Common\\Features\\Auth\\Commands\\SignUp\\SignUpCommandHandler.cs",
+              "ToolTip": "C:\\Users\\Admin\\CRC\\CRC.WebPortal\\CRC.WebPortal.Application\\Common\\Features\\Auth\\Commands\\SignUp\\SignUpCommandHandler.cs",
+              "RelativeToolTip": "CRC.WebPortal.Application\\Common\\Features\\Auth\\Commands\\SignUp\\SignUpCommandHandler.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEgAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-09T02:57:29.312Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "SignUpCommand.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\CRC\\CRC.WebPortal\\CRC.WebPortal.Application\\Common\\Features\\Auth\\Commands\\SignUp\\SignUpCommand.cs",
+              "RelativeDocumentMoniker": "CRC.WebPortal.Application\\Common\\Features\\Auth\\Commands\\SignUp\\SignUpCommand.cs",
+              "ToolTip": "C:\\Users\\Admin\\CRC\\CRC.WebPortal\\CRC.WebPortal.Application\\Common\\Features\\Auth\\Commands\\SignUp\\SignUpCommand.cs",
+              "RelativeToolTip": "CRC.WebPortal.Application\\Common\\Features\\Auth\\Commands\\SignUp\\SignUpCommand.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-09T02:57:00.339Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "UserDto.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\CRC\\CRC.WebPortal\\CRC.WebPortal.Application\\Common\\Models\\UserDto.cs",
+              "RelativeDocumentMoniker": "CRC.WebPortal.Application\\Common\\Models\\UserDto.cs",
+              "ToolTip": "C:\\Users\\Admin\\CRC\\CRC.WebPortal\\CRC.WebPortal.Application\\Common\\Models\\UserDto.cs",
+              "RelativeToolTip": "CRC.WebPortal.Application\\Common\\Models\\UserDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-09T02:55:32.919Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "AuthResponse.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\CRC\\CRC.WebPortal\\CRC.WebPortal.Application\\Common\\Models\\AuthResponse.cs",
+              "RelativeDocumentMoniker": "CRC.WebPortal.Application\\Common\\Models\\AuthResponse.cs",
+              "ToolTip": "C:\\Users\\Admin\\CRC\\CRC.WebPortal\\CRC.WebPortal.Application\\Common\\Models\\AuthResponse.cs",
+              "RelativeToolTip": "CRC.WebPortal.Application\\Common\\Models\\AuthResponse.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-09T02:55:00.222Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "IUnitOfWork.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\CRC\\CRC.WebPortal\\CRC.WebPortal.Domain\\Interfaces\\IUnitOfWork.cs",
+              "RelativeDocumentMoniker": "CRC.WebPortal.Domain\\Interfaces\\IUnitOfWork.cs",
+              "ToolTip": "C:\\Users\\Admin\\CRC\\CRC.WebPortal\\CRC.WebPortal.Domain\\Interfaces\\IUnitOfWork.cs",
+              "RelativeToolTip": "CRC.WebPortal.Domain\\Interfaces\\IUnitOfWork.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-09T02:48:44.618Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "IUserRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\CRC\\CRC.WebPortal\\CRC.WebPortal.Domain\\Interfaces\\IUserRepository.cs",
+              "RelativeDocumentMoniker": "CRC.WebPortal.Domain\\Interfaces\\IUserRepository.cs",
+              "ToolTip": "C:\\Users\\Admin\\CRC\\CRC.WebPortal\\CRC.WebPortal.Domain\\Interfaces\\IUserRepository.cs",
+              "RelativeToolTip": "CRC.WebPortal.Domain\\Interfaces\\IUserRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-09T02:48:06.307Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "User.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\CRC\\CRC.WebPortal\\CRC.WebPortal.Domain\\Entities\\User.cs",
+              "RelativeDocumentMoniker": "CRC.WebPortal.Domain\\Entities\\User.cs",
+              "ToolTip": "C:\\Users\\Admin\\CRC\\CRC.WebPortal\\CRC.WebPortal.Domain\\Entities\\User.cs",
+              "RelativeToolTip": "CRC.WebPortal.Domain\\Entities\\User.cs",
+              "ViewState": "AgIAAAQAAAAAAAAAAAA1wBUAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-09T02:47:32.828Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
