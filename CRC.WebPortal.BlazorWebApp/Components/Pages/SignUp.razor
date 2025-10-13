@@ -1,7 +1,9 @@
 @page "/signup"
 @using CRC.WebPortal.BlazorWebApp.Models
 @using CRC.WebPortal.BlazorWebApp.Services
+@using System.ComponentModel.DataAnnotations
 @using Microsoft.AspNetCore.Components
+
 @inject IAuthService AuthService
 @inject NavigationManager Navigation
 
@@ -43,33 +45,21 @@
                             <ValidationMessage For="@(() => signupData.Email)" class="text-danger small mt-1" />
                         </div>
 
-                        <div class="mb-3 position-relative">
+                        <div class="mb-3">
                             <InputText @bind-Value="signupData.Password" 
                                       class="form-control form-control-lg" 
                                       placeholder="Password" 
-                                      type="@(showPassword ? "text" : "password")"
-                                      style="border: 1px solid #ddd; border-radius: 8px; padding: 12px 45px 12px 16px; font-size: 14px;" />
-                            <button type="button" 
-                                    class="btn btn-link position-absolute end-0 top-50 translate-middle-y me-2 p-0" 
-                                    style="border: none; background: none; color: #6c757d;"
-                                    @onclick="TogglePasswordVisibility">
-                                <i class="@(showPassword ? "bi bi-eye-slash" : "bi bi-eye")"></i>
-                            </button>
+                                      type="password"
+                                      style="border: 1px solid #ddd; border-radius: 8px; padding: 12px 16px; font-size: 14px;" />
                             <ValidationMessage For="@(() => signupData.Password)" class="text-danger small mt-1" />
                         </div>
 
-                        <div class="mb-4 position-relative">
+                        <div class="mb-4">
                             <InputText @bind-Value="signupData.ConfirmPassword" 
                                       class="form-control form-control-lg" 
                                       placeholder="Confirm Password" 
-                                      type="@(showConfirmPassword ? "text" : "password")"
-                                      style="border: 1px solid #ddd; border-radius: 8px; padding: 12px 45px 12px 16px; font-size: 14px;" />
-                            <button type="button" 
-                                    class="btn btn-link position-absolute end-0 top-50 translate-middle-y me-2 p-0" 
-                                    style="border: none; background: none; color: #6c757d;"
-                                    @onclick="ToggleConfirmPasswordVisibility">
-                                <i class="@(showConfirmPassword ? "bi bi-eye-slash" : "bi bi-eye")"></i>
-                            </button>
+                                      type="password"
+                                      style="border: 1px solid #ddd; border-radius: 8px; padding: 12px 16px; font-size: 14px;" />
                             <ValidationMessage For="@(() => signupData.ConfirmPassword)" class="text-danger small mt-1" />
                         </div>
 
@@ -117,25 +107,26 @@
     </div>
 </div>
 
+<style>
+    .form-control:focus {
+        border-color: #667eea;
+        box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+    }
+</style>
+
 @code {
-    // Simple data structure for UI - no command logic here
     [SupplyParameterFromForm]
     private SignupData signupData { get; set; } = default!;
+
+    private string errorMessage = string.Empty;
+    private string successMessage = string.Empty;
+    private bool isLoading = false;
 
     protected override void OnInitialized()
     {
         signupData ??= new SignupData();
     }
-    private string errorMessage = string.Empty;
-    private string successMessage = string.Empty;
-    private bool isLoading = false;
-    private bool showPassword = false;
-    private bool showConfirmPassword = false;
 
-    /// <summary>
-    /// Handles form submission - sends data to API, API creates commands internally
-    /// Clean Architecture: UI only sends data, backend handles commands
-    /// </summary>
     private async Task HandleValidSubmit()
     {
         errorMessage = string.Empty;
@@ -144,14 +135,13 @@
 
         try
         {
-            // UI just calls the service like a function - clean separation
             var result = await AuthService.SignUpAsync(signupData);
             
             if (result.IsSuccess)
             {
                 successMessage = "Account created successfully! Redirecting...";
-                await Task.Delay(2000); // Show success message briefly
-                Navigation.NavigateTo("/home");
+                await Task.Delay(2000);
+                Navigation.NavigateTo("/signin");
             }
             else
             {
@@ -172,15 +162,5 @@
     {
         errorMessage = "Please correct the errors in the form.";
         successMessage = string.Empty;
-    }
-
-    private void TogglePasswordVisibility()
-    {
-        showPassword = !showPassword;
-    }
-
-    private void ToggleConfirmPasswordVisibility()
-    {
-        showConfirmPassword = !showConfirmPassword;
     }
 }

@@ -7,4 +7,7 @@ public interface IAuthService
 {
     Task<AuthResponse> SignUpAsync(SignupData signupData);
     Task<AuthResponse> SignInAsync(SigninData signinData);
+    Task<AuthResponse> ForgotPasswordAsync(ForgotPasswordData forgotPasswordData);
+    Task<AuthResponse> ResetPasswordAsync(ResetPasswordData resetPasswordData);
+    Task LogoutAsync();
 }

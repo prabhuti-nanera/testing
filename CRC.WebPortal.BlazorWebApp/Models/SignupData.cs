@@ -2,9 +2,6 @@ using System.ComponentModel.DataAnnotations;
 
 namespace CRC.WebPortal.BlazorWebApp.Models;
 
-/// <summary>
-/// Simple data structure for signup form - contains only UI data for API transfer
-/// </summary>
 public class SignupData
 {
     [Required(ErrorMessage = "First Name is required")]

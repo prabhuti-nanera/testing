@@ -13,9 +13,9 @@ public static class DependencyInjection
 {
     public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
     {
-        // Database Context - Using InMemory for development
+        // Database
         services.AddDbContext<ApplicationDbContext>(options =>
-            options.UseInMemoryDatabase("CRCWebPortalDb"));
+            options.UseNpgsql(configuration.GetConnectionString("DefaultConnection")));
 
         // Repositories
         services.AddScoped<IUnitOfWork, UnitOfWork>();

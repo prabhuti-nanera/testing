@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 using CRC.WebPortal.Application.Common.Models;
 using CRC.WebPortal.Application.Features.Auth.Commands.SignUp;
 using CRC.WebPortal.Application.Features.Auth.Commands.SignIn;
+using CRC.WebPortal.Application.Common.Features.Auth.Commands.ForgotPassword;
+using CRC.WebPortal.Application.Common.Features.Auth.Commands.ResetPassword;
 
 namespace CRC.WebPortal.API.Controllers;
 
@@ -17,23 +19,6 @@ public class AuthController : ControllerBase
         _mediator = mediator;
     }
 
-    /// <summary>
-    /// Health check endpoint for API
-    /// </summary>
-    [HttpGet("health")]
-    public IActionResult Health()
-    {
-        return Ok(new { 
-            status = "API is running", 
-            timestamp = DateTime.UtcNow,
-            message = "CRC WebPortal API - Clean Architecture Implementation"
-        });
-    }
-
-    /// <summary>
-    /// Receives signup data from UI and creates SignUpCommand internally
-    /// This follows Clean Architecture - UI sends data, API creates commands
-    /// </summary>
     [HttpPost("signup")]
     public async Task<ActionResult<AuthResponse>> SignUp([FromBody] SignupDataRequest request)
     {
@@ -54,10 +39,6 @@ public class AuthController : ControllerBase
         return Ok(result);
     }
 
-    /// <summary>
-    /// Receives signin data from UI and creates SignInCommand internally
-    /// This follows Clean Architecture - UI sends data, API creates commands
-    /// </summary>
     [HttpPost("signin")]
     public async Task<ActionResult<AuthResponse>> SignIn([FromBody] SigninDataRequest request)
     {
@@ -76,11 +57,36 @@ public class AuthController : ControllerBase
 
         return Ok(result);
     }
+
+    [HttpPost("forgot-password")]
+    public async Task<ActionResult<AuthResponse>> ForgotPassword([FromBody] ForgotPasswordDataRequest request)
+    {
+        // API receives simple DTO and creates command internally (CQRS pattern)
+        var command = new ForgotPasswordCommand
+        {
+            Email = request.Email
+        };
+
+        var result = await _mediator.Send(command);
+        return Ok(result);
+    }
+
+    [HttpPost("reset-password")]
+    public async Task<ActionResult<AuthResponse>> ResetPassword([FromBody] ResetPasswordDataRequest request)
+    {
+        // API receives simple DTO and creates command internally (CQRS pattern)
+        var command = new ResetPasswordCommand
+        {
+            Email = request.Email,
+            ResetCode = request.ResetCode,
+            NewPassword = request.NewPassword
+        };
+
+        var result = await _mediator.Send(command);
+        return Ok(result);
+    }
 }
 
-/// <summary>
-/// Simple data transfer object for API - matches UI SignupData structure
-/// </summary>
 public class SignupDataRequest
 {
     public string Email { get; set; } = string.Empty;
@@ -89,12 +95,21 @@ public class SignupDataRequest
     public string LastName { get; set; } = string.Empty;
 }
 
-/// <summary>
-/// Simple data transfer object for API - matches UI SigninData structure
-/// </summary>
 public class SigninDataRequest
 {
     public string Email { get; set; } = string.Empty;
     public string Password { get; set; } = string.Empty;
     public bool RememberMe { get; set; } = false;
+}
+
+public class ForgotPasswordDataRequest
+{
+    public string Email { get; set; } = string.Empty;
+}
+
+public class ResetPasswordDataRequest
+{
+    public string Email { get; set; } = string.Empty;
+    public string ResetCode { get; set; } = string.Empty;
+    public string NewPassword { get; set; } = string.Empty;
 }

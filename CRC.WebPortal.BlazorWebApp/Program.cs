@@ -1,10 +1,16 @@
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.AspNetCore.Components.Authorization;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Http;
 using Blazored.LocalStorage;
 using CRC.WebPortal.BlazorWebApp.Services;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
+
+// Completely disable all logging
+builder.Logging.ClearProviders();
+builder.Logging.SetMinimumLevel(LogLevel.None);
 
 // Set root components for pure WebAssembly
 builder.RootComponents.Add<CRC.WebPortal.BlazorWebApp.App>("#app");
@@ -17,9 +23,9 @@ builder.Services.AddScoped(sp => sp.GetRequiredService<IHttpClientFactory>().Cre
 // Add Blazored LocalStorage for token storage
 builder.Services.AddBlazoredLocalStorage();
 
-// Add Authentication services
-builder.Services.AddAuthorizationCore();
-builder.Services.AddScoped<AuthenticationStateProvider, CustomAuthStateProvider>();
+// Register services - CQRS Pattern: Service registration for dependency injection
 builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddScoped<CustomAuthStateProvider>();
+builder.Services.AddScoped<AuthenticationStateProvider>(provider => provider.GetRequiredService<CustomAuthStateProvider>());
 
 await builder.Build().RunAsync();
