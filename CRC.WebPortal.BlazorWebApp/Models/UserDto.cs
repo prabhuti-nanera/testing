@@ -1,7 +1,9 @@
 namespace CRC.WebPortal.BlazorWebApp.Models;
 
-
-/// UI data transfer object for user information
+/// <summary>
+/// Simple user data structure for UI layer - contains only what UI needs to display
+/// This is NOT the domain entity, just a data structure for API communication
+/// </summary>
 public class UserDto
 {
     public Guid Id { get; set; }

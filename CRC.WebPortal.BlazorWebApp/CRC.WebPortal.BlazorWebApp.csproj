@@ -16,8 +16,4 @@
     <PackageReference Include="Microsoft.Extensions.Http" Version="10.0.0-rc.1.25451.107" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\CRC.WebPortal.Application\CRC.WebPortal.Application.csproj" />
-  </ItemGroup>
-
 </Project>

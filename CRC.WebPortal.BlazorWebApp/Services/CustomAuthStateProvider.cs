@@ -2,7 +2,6 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Blazored.LocalStorage;
 using Microsoft.AspNetCore.Components.Authorization;
-using CRC.WebPortal.Application.Common.Models;
 using CRC.WebPortal.BlazorWebApp.Models;
 
 namespace CRC.WebPortal.BlazorWebApp.Services;
@@ -34,7 +33,7 @@ public class CustomAuthStateProvider : AuthenticationStateProvider
         return new AuthenticationState(new ClaimsPrincipal(claims));
     }
 
-    public void NotifyAuthenticationStateChanged(CRC.WebPortal.Application.Common.Models.UserDto user)
+    public void NotifyAuthenticationStateChanged(UserDto user)
     {
         var authState = Task.FromResult(user == null ?
             new AuthenticationState(_anonymous) :
