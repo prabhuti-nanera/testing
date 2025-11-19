@@ -1,7 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using CRC.WebPortal.Application.Interfaces;
 using CRC.WebPortal.Domain.Interfaces;
 using CRC.WebPortal.Infrastructure.Data;
 using CRC.WebPortal.Infrastructure.Repositories;
@@ -20,9 +19,12 @@ public static class DependencyInjection
         // Repositories
         services.AddScoped<IUnitOfWork, UnitOfWork>();
         services.AddScoped<IUserRepository, UserRepository>();
+        services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 
         // Services
         services.AddScoped<ITokenService, TokenService>();
+        services.AddScoped<IEmailService, EmailService>();
+        services.AddScoped<DataSeeder>();
 
         return services;
     }

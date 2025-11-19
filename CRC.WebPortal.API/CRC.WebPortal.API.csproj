@@ -7,8 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="9.0.9" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.9">
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="10.0.0-rc.1.25451.107" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="10.0.0-rc.1.25451.107">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
@@ -18,6 +18,8 @@
   <ItemGroup>
     <ProjectReference Include="..\CRC.WebPortal.Application\CRC.WebPortal.Application.csproj" />
     <ProjectReference Include="..\CRC.WebPortal.Infrastructure\CRC.WebPortal.Infrastructure.csproj" />
+    <ProjectReference Include="..\CRC.WebPortal.Shared\CRC.WebPortal.Shared.csproj" />
+    <ProjectReference Include="..\CRC.Common\CRC.Common.csproj" />
   </ItemGroup>
 
 </Project>

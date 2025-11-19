@@ -1,10 +1,13 @@
 @page "/"
 @page "/signin"
-@using CRC.WebPortal.BlazorWebApp.Models
+@layout AuthLayout
+@using CRC.Common.Models
 @using CRC.WebPortal.BlazorWebApp.Services
 @using System.ComponentModel.DataAnnotations
 @using Microsoft.AspNetCore.Components
+@using CRC.WebPortal.BlazorWebApp.Layout
 @inject IAuthService AuthService
+@inject IToastService ToastService
 @inject NavigationManager Navigation
 
 <PageTitle>Sign In - CRC WebPortal</PageTitle>
@@ -37,6 +40,10 @@
                             <ValidationMessage For="@(() => signinData.Password)" class="text-danger small mt-1" />
                         </div>
 
+                        <div class="d-flex justify-content-end mb-3">
+                            <a href="/forgot-password" style="color: #667eea; text-decoration: none; font-size: 14px;">Forgot your password?</a>
+                        </div>
+
                         <div class="form-check mb-4">
                             <InputCheckbox @bind-Value="signinData.RememberMe" class="form-check-input" id="rememberMe" />
                             <label class="form-check-label" for="rememberMe" style="font-size: 14px; color: #6c757d;">
@@ -44,38 +51,20 @@
                             </label>
                         </div>
 
-                        @if (!string.IsNullOrEmpty(errorMessage))
-                        {
-                            <div class="alert alert-danger mb-3" role="alert" style="border-radius: 8px; font-size: 14px;">
-                                @errorMessage
-                            </div>
-                        }
-
-                        @if (!string.IsNullOrEmpty(successMessage))
-                        {
-                            <div class="alert alert-success mb-3" role="alert" style="border-radius: 8px; font-size: 14px;">
-                                @successMessage
-                            </div>
-                        }
-
-                        <button type="submit" 
-                                class="btn btn-primary w-100 mb-4" 
-                                disabled="@isLoading"
-                                style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border: none; border-radius: 8px; padding: 12px; font-size: 16px; font-weight: 500;">
-                            @if (isLoading)
-                            {
-                                <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
-                                <span>Signing In...</span>
-                            }
-                            else
-                            {
-                                <span>Sign In</span>
-                            }
-                        </button>
-
-                        <div class="text-center mb-3">
-                            <a href="/forgot-password" style="color: #667eea; text-decoration: none; font-size: 14px;">Forgot your password?</a>
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary btn-lg" disabled="@isLoading">
+                                @if (isLoading)
+                                {
+                                    <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+                                    <span>Signing in...</span>
+                                }
+                                else
+                                {
+                                    <span>Sign In</span>
+                                }
+                            </button>
                         </div>
+                        
 
                         <div class="text-center mb-3">
                             <span style="color: #6c757d; font-size: 14px;">Or With</span>
@@ -93,22 +82,11 @@
 </div>
 
 @code {
-    // Simple data structure for UI - no command logic here
-    [SupplyParameterFromForm]
-    private SigninData signinData { get; set; } = default!;
-
-    protected override void OnInitialized()
-    {
-        signinData ??= new SigninData();
-    }
-    private string errorMessage = string.Empty;
-    private string successMessage = string.Empty;
+    private SigninRequest signinData = new();
     private bool isLoading = false;
 
     private async Task HandleValidSubmit()
     {
-        errorMessage = string.Empty;
-        successMessage = string.Empty;
         isLoading = true;
 
         try
@@ -118,29 +96,42 @@
             
             if (result.IsSuccess)
             {
-                successMessage = "Sign in successful! Redirecting...";
-                await Task.Delay(2000);
-                Navigation.NavigateTo("/home");
+                // Show success toast notification
+                await ToastService.ShowSuccessAsync("Sign in successful! Redirecting...", 3000);
+                
+                // Wait for toast visibility then navigate
+                await Task.Delay(1500);
+                
+                // Navigate to home page
+                Navigation.NavigateTo("/home", forceLoad: true);
             }
             else
             {
-                errorMessage = result.Message ?? "Sign in failed. Please try again.";
+                // Show error toast notification
+                await ToastService.ShowErrorAsync(
+                    result.Message ?? "Invalid email or password. Please check your credentials and try again.", 
+                    5000);
             }
         }
-        catch (Exception ex)
+        catch (Exception)
         {
-            errorMessage = $"An error occurred: {ex.Message}";
+            // Show error toast for unexpected exceptions
+            await ToastService.ShowErrorAsync("An error occurred while processing your request.", 5000);
         }
         finally
         {
             isLoading = false;
+            StateHasChanged();
         }
     }
 
-    private void HandleInvalidSubmit()
+    private async void HandleInvalidSubmit()
     {
-        errorMessage = "Please correct the errors in the form.";
-        successMessage = string.Empty;
+        // Show warning toast for form validation errors
+        await ToastService.ShowWarningAsync("Please correct the errors in the form.", 4000);
+        // Field-level ValidationMessages will also show specific errors
     }
+    
+
 }
 

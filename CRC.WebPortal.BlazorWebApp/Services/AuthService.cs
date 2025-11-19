@@ -2,8 +2,8 @@ using System.Net.Http.Json;
 using Blazored.LocalStorage;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.JSInterop;
-using CRC.WebPortal.Application.Common.Models;
 using CRC.WebPortal.BlazorWebApp.Models;
+using CRC.Common.Models;
 
 namespace CRC.WebPortal.BlazorWebApp.Services;
 
@@ -24,12 +24,43 @@ public class AuthService : IAuthService
     }
 
 
-    public async Task<AuthResponse> SignUpAsync(SignupData signupData)
+    public async Task<AuthResponse> SignUpAsync(SignupRequest signupData)
+    {
+        return await ExecuteAuthRequestAsync("api/auth/signup", signupData, "Registration failed. Please try again.");
+    }
+
+    public async Task<AuthResponse> SignInAsync(SigninRequest signinData)
+    {
+        return await ExecuteAuthRequestAsync("api/auth/signin", signinData, "Sign in failed. Please try again.");
+    }
+
+
+    public async Task<AuthResponse> SendOtpAsync(SendOtpRequest request)
+    {
+        var result = await ExecuteAuthRequestAsync("api/auth/send-otp", request, "Unable to send OTP. Please try again.");
+        
+        // Log OTP to browser console in development mode (using RefreshToken property)
+        if (result.IsSuccess && !string.IsNullOrEmpty(result.RefreshToken))
+        {
+            await _jsRuntime.InvokeVoidAsync("console.log", $"🔑 YOUR OTP CODE: {result.RefreshToken} 🔑");
+            await _jsRuntime.InvokeVoidAsync("console.log", $"📧 Email: {request.Email}");
+            await _jsRuntime.InvokeVoidAsync("console.log", "⏰ OTP expires in 5 minutes");
+        }
+        
+        return result;
+    }
+
+    public async Task<AuthResponse> VerifyOtpAndResetPasswordAsync(VerifyOtpRequest request)
+    {
+        return await ExecuteAuthRequestAsync("api/auth/verify-otp", request, "Unable to verify OTP. Please try again.");
+    }
+
+
+    private async Task<AuthResponse> ExecuteAuthRequestAsync<T>(string endpoint, T data, string defaultErrorMessage)
     {
         try
         {
-            // UI only sends simple data structure - no command creation here
-            var response = await _httpClient.PostAsJsonAsync("api/auth/signup", signupData);
+            var response = await _httpClient.PostAsJsonAsync(endpoint, data);
             
             if (response.IsSuccessStatusCode)
             {
@@ -38,8 +69,10 @@ public class AuthService : IAuthService
                 if (result?.IsSuccess == true && !string.IsNullOrEmpty(result.Token))
                 {
                     await _localStorage.SetItemAsync(TokenKey, result.Token);
-                    if (_authStateProvider is CustomAuthStateProvider customProvider)
+                    if (_authStateProvider is CustomAuthStateProvider customProvider && result.User != null)
                     {
+                        // Ensure authentication state change happens after token is stored
+                        await Task.Delay(50); // Small delay to ensure localStorage is updated
                         customProvider.NotifyAuthenticationStateChanged(result.User);
                     }
                 }
@@ -48,39 +81,7 @@ public class AuthService : IAuthService
             }
             
             var errorResult = await response.Content.ReadFromJsonAsync<AuthResponse>();
-            return errorResult ?? new AuthResponse { IsSuccess = false, Message = "Registration failed. Please try again." };
-        }
-        catch (Exception ex)
-        {
-            return new AuthResponse { IsSuccess = false, Message = $"An error occurred: {ex.Message}" };
-        }
-    }
-
-    public async Task<AuthResponse> SignInAsync(SigninData signinData)
-    {
-        try
-        {
-            // UI only sends simple data structure - no command creation here
-            var response = await _httpClient.PostAsJsonAsync("api/auth/signin", signinData);
-            
-            if (response.IsSuccessStatusCode)
-            {
-                var result = await response.Content.ReadFromJsonAsync<AuthResponse>();
-                
-                if (result?.IsSuccess == true && !string.IsNullOrEmpty(result.Token))
-                {
-                    await _localStorage.SetItemAsync(TokenKey, result.Token);
-                    if (_authStateProvider is CustomAuthStateProvider customProvider)
-                    {
-                        customProvider.NotifyAuthenticationStateChanged(result.User);
-                    }
-                }
-                
-                return result ?? new AuthResponse { IsSuccess = false, Message = "Invalid response from server." };
-            }
-            
-            var errorResult = await response.Content.ReadFromJsonAsync<AuthResponse>();
-            return errorResult ?? new AuthResponse { IsSuccess = false, Message = "Sign in failed. Please try again." };
+            return errorResult ?? new AuthResponse { IsSuccess = false, Message = defaultErrorMessage };
         }
         catch (Exception ex)
         {
@@ -88,65 +89,6 @@ public class AuthService : IAuthService
         }
     }
 
-    public async Task<AuthResponse> ForgotPasswordAsync(ForgotPasswordData forgotPasswordData)
-    {
-        try
-        {
-            // Create simple request object for API
-            var request = new ForgotPasswordDataRequest
-            {
-                Email = forgotPasswordData.Email
-            };
-
-            var response = await _httpClient.PostAsJsonAsync("api/auth/forgot-password", request);
-            
-            if (response.IsSuccessStatusCode)
-            {
-                var authResponse = await response.Content.ReadFromJsonAsync<AuthResponse>();
-                return authResponse ?? new AuthResponse { IsSuccess = false, Message = "Invalid response from server" };
-            }
-            else
-            {
-                var errorResponse = await response.Content.ReadFromJsonAsync<AuthResponse>();
-                return errorResponse ?? new AuthResponse { IsSuccess = false, Message = "Failed to process forgot password request" };
-            }
-        }
-        catch (Exception ex)
-        {
-            return new AuthResponse { IsSuccess = false, Message = $"Network error: {ex.Message}" };
-        }
-    }
-
-    public async Task<AuthResponse> ResetPasswordAsync(ResetPasswordData resetPasswordData)
-    {
-        try
-        {
-            // Create simple request object for API
-            var request = new ResetPasswordDataRequest
-            {
-                Email = resetPasswordData.Email,
-                ResetCode = resetPasswordData.ResetCode,
-                NewPassword = resetPasswordData.NewPassword
-            };
-
-            var response = await _httpClient.PostAsJsonAsync("api/auth/reset-password", request);
-            
-            if (response.IsSuccessStatusCode)
-            {
-                var authResponse = await response.Content.ReadFromJsonAsync<AuthResponse>();
-                return authResponse ?? new AuthResponse { IsSuccess = false, Message = "Invalid response from server" };
-            }
-            else
-            {
-                var errorResponse = await response.Content.ReadFromJsonAsync<AuthResponse>();
-                return errorResponse ?? new AuthResponse { IsSuccess = false, Message = "Failed to reset password" };
-            }
-        }
-        catch (Exception ex)
-        {
-            return new AuthResponse { IsSuccess = false, Message = $"Network error: {ex.Message}" };
-        }
-    }
 
     public async Task LogoutAsync()
     {
@@ -158,21 +100,10 @@ public class AuthService : IAuthService
             // Notify auth state provider that user is logged out
             ((CustomAuthStateProvider)_authStateProvider).NotifyAuthenticationStateChanged(null!);
         }
-        catch (Exception ex)
+        catch (Exception)
         {
             // Silent error handling for logout
         }
     }
 
-    private class ForgotPasswordDataRequest
-    {
-        public string Email { get; set; } = string.Empty;
-    }
-
-    private class ResetPasswordDataRequest
-    {
-        public string Email { get; set; } = string.Empty;
-        public string ResetCode { get; set; } = string.Empty;
-        public string NewPassword { get; set; } = string.Empty;
-    }
 }

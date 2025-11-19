@@ -89,3 +89,51 @@ body {
 .position-relative .btn-link {
     z-index: 10;
 }
+
+/* Pattern Row Dropdown Styling */
+.digit-dropdown {
+    transition: all 0.2s ease;
+    border-radius: 0.375rem;
+}
+
+.digit-dropdown:hover {
+    border-color: #6c757d;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.digit-dropdown:focus {
+    border-color: #667eea;
+    box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+    outline: none;
+}
+
+/* Pattern Row Labels */
+.pattern-row .form-label {
+    margin-bottom: 0.25rem;
+    font-size: 0.875rem;
+    color: #495057 !important;
+}
+
+/* Custom Input Styling */
+.custom-input:focus {
+    border-color: #ffc107;
+    box-shadow: 0 0 0 0.2rem rgba(255, 193, 7, 0.25);
+}
+
+/* Result Preview Styling */
+.result-preview {
+    min-height: 2.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Courier New', monospace;
+}
+
+/* Pattern Row Container */
+.pattern-row {
+    background: #f8f9fa;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    margin-bottom: 0.75rem;
+    border: 1px solid #e9ecef;
+}

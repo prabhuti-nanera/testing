@@ -1,10 +1,13 @@
 @page "/signup"
-@using CRC.WebPortal.BlazorWebApp.Models
+@layout AuthLayout
+@using CRC.Common.Models
 @using CRC.WebPortal.BlazorWebApp.Services
 @using System.ComponentModel.DataAnnotations
 @using Microsoft.AspNetCore.Components
+@using CRC.WebPortal.BlazorWebApp.Layout
 
 @inject IAuthService AuthService
+@inject IToastService ToastService
 @inject NavigationManager Navigation
 
 <PageTitle>Sign Up - CRC WebPortal</PageTitle>
@@ -63,19 +66,6 @@
                             <ValidationMessage For="@(() => signupData.ConfirmPassword)" class="text-danger small mt-1" />
                         </div>
 
-                        @if (!string.IsNullOrEmpty(errorMessage))
-                        {
-                            <div class="alert alert-danger mb-3" role="alert" style="border-radius: 8px; font-size: 14px;">
-                                @errorMessage
-                            </div>
-                        }
-
-                        @if (!string.IsNullOrEmpty(successMessage))
-                        {
-                            <div class="alert alert-success mb-3" role="alert" style="border-radius: 8px; font-size: 14px;">
-                                @successMessage
-                            </div>
-                        }
 
                         <button type="submit" 
                                 class="btn btn-primary w-100 mb-4" 
@@ -116,21 +106,17 @@
 
 @code {
     [SupplyParameterFromForm]
-    private SignupData signupData { get; set; } = default!;
+    private SignupRequest signupData { get; set; } = default!;
 
-    private string errorMessage = string.Empty;
-    private string successMessage = string.Empty;
     private bool isLoading = false;
 
     protected override void OnInitialized()
     {
-        signupData ??= new SignupData();
+        signupData ??= new SignupRequest();
     }
 
     private async Task HandleValidSubmit()
     {
-        errorMessage = string.Empty;
-        successMessage = string.Empty;
         isLoading = true;
 
         try
@@ -139,28 +125,30 @@
             
             if (result.IsSuccess)
             {
-                successMessage = "Account created successfully! Redirecting...";
-                await Task.Delay(2000);
+                await ToastService.ShowSuccessAsync("Registration successful! Redirecting to sign in...", 3000);
+                // Small delay to show success message, then redirect
+                await Task.Delay(1000);
                 Navigation.NavigateTo("/signin");
             }
             else
             {
-                errorMessage = result.Message ?? "Registration failed. Please try again.";
+                await ToastService.ShowErrorAsync(result.Message ?? "Registration failed. Please try again.", 5000);
             }
         }
-        catch (Exception ex)
+        catch (Exception)
         {
-            errorMessage = $"An error occurred: {ex.Message}";
+            await ToastService.ShowErrorAsync("An error occurred while processing your request.", 5000);
         }
         finally
         {
             isLoading = false;
+            StateHasChanged();
         }
     }
 
-    private void HandleInvalidSubmit()
+    private async void HandleInvalidSubmit()
     {
-        errorMessage = "Please correct the errors in the form.";
-        successMessage = string.Empty;
+        await ToastService.ShowWarningAsync("Please correct the errors in the form.", 4000);
+        // Only field-level validation messages should show
     }
 }

@@ -1,4 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using CRC.WebPortal.Domain.Entities;
 using CRC.WebPortal.Domain.Interfaces;
 using CRC.WebPortal.Infrastructure.Data;

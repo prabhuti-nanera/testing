@@ -8,24 +8,43 @@ using CRC.WebPortal.BlazorWebApp.Services;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 
-// Completely disable all logging
-builder.Logging.ClearProviders();
-builder.Logging.SetMinimumLevel(LogLevel.None);
+// Configure logging to suppress HTTP client logs
+builder.Logging.SetMinimumLevel(LogLevel.Warning);
+builder.Logging.AddFilter("System.Net.Http.HttpClient", LogLevel.None);
+builder.Logging.AddFilter("Microsoft.Extensions.Http", LogLevel.None);
 
 // Set root components for pure WebAssembly
 builder.RootComponents.Add<CRC.WebPortal.BlazorWebApp.App>("#app");
 builder.RootComponents.Add<HeadOutlet>("head::after");
 
-// Configure HttpClient for API communication
-builder.Services.AddHttpClient("API", client => client.BaseAddress = new Uri("http://localhost:5103/"));
+// Register the custom authorization message handler
+builder.Services.AddScoped<AuthorizationMessageHandler>();
+
+// Configure HttpClient for API communication with authorization
+builder.Services.AddHttpClient("API", (serviceProvider, client) =>
+{
+    var configuration = serviceProvider.GetRequiredService<IConfiguration>();
+    var apiBaseUrl = configuration["ApiBaseUrl"] ?? "http://localhost:5203";
+    client.BaseAddress = new Uri(apiBaseUrl);
+})
+    .AddHttpMessageHandler<AuthorizationMessageHandler>();
 builder.Services.AddScoped(sp => sp.GetRequiredService<IHttpClientFactory>().CreateClient("API"));
 
 // Add Blazored LocalStorage for token storage
 builder.Services.AddBlazoredLocalStorage();
 
-// Register services - CQRS Pattern: Service registration for dependency injection
+// Add AuthorizationCore to enable AuthorizeView and policies
+builder.Services.AddAuthorizationCore();
+
+// Register Blazor-specific services
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<CustomAuthStateProvider>();
 builder.Services.AddScoped<AuthenticationStateProvider>(provider => provider.GetRequiredService<CustomAuthStateProvider>());
+
+// Register Toast Service following CQRS pattern
+builder.Services.AddScoped<IToastService, ToastService>();
+
+// Register UnitType Service following CQRS pattern
+builder.Services.AddScoped<IUnitTypeService, UnitTypeService>();
 
 await builder.Build().RunAsync();

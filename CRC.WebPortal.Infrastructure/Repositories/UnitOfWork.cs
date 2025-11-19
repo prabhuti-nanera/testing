@@ -1,4 +1,8 @@
-﻿using CRC.WebPortal.Domain.Interfaces;
+using System;
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore.Storage;
+using CRC.WebPortal.Domain.Entities;
+using CRC.WebPortal.Domain.Interfaces;
 using CRC.WebPortal.Infrastructure.Data;
 
 namespace CRC.WebPortal.Infrastructure.Repositories;
@@ -6,22 +10,85 @@ namespace CRC.WebPortal.Infrastructure.Repositories;
 public class UnitOfWork : IUnitOfWork
 {
     private readonly ApplicationDbContext _context;
-    private IUserRepository _users;
+    private IDbContextTransaction? _transaction;
+    private IUserRepository? _users;
 
-    public UnitOfWork(ApplicationDbContext context)
+    public UnitOfWork(ApplicationDbContext context, IUserRepository userRepository)
     {
-        _context = context;
+        _context = context ?? throw new ArgumentNullException(nameof(context));
+        _users = userRepository;
     }
 
-    public IUserRepository Users => _users ??= new UserRepository(_context);
+    public IUserRepository Users => _users ?? throw new InvalidOperationException("UserRepository is not initialized");
 
-    public async Task<int> SaveChangesAsync()
+    public async Task BeginTransactionAsync(CancellationToken cancellationToken = default)
     {
-        return await _context.SaveChangesAsync();
+        _transaction ??= await _context.Database.BeginTransactionAsync(cancellationToken);
+    }
+
+    public async Task CommitTransactionAsync(CancellationToken cancellationToken = default)
+    {
+        try
+        {
+            await _context.SaveChangesAsync(cancellationToken);
+            if (_transaction != null)
+            {
+                await _transaction.CommitAsync(cancellationToken);
+            }
+        }
+        catch
+        {
+            await RollbackTransactionAsync(cancellationToken);
+            throw;
+        }
+        finally
+        {
+            if (_transaction != null)
+            {
+                await _transaction.DisposeAsync();
+                _transaction = null;
+            }
+        }
+    }
+
+    public async Task RollbackTransactionAsync(CancellationToken cancellationToken = default)
+    {
+        if (_transaction != null)
+        {
+            await _transaction.RollbackAsync(cancellationToken);
+            await _transaction.DisposeAsync();
+            _transaction = null;
+        }
+    }
+
+    public async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
+    {
+        return await _context.SaveChangesAsync(cancellationToken);
+    }
+    
+    public async Task<int> CommitAsync(CancellationToken cancellationToken = default)
+    {
+        return await SaveChangesAsync(cancellationToken);
+    }
+
+    private bool _disposed = false;
+
+    protected virtual void Dispose(bool disposing)
+    {
+        if (!_disposed)
+        {
+            if (disposing)
+            {
+                _transaction?.Dispose();
+                _context.Dispose();
+            }
+            _disposed = true;
+        }
     }
 
     public void Dispose()
     {
-        _context.Dispose();
+        Dispose(true);
+        GC.SuppressFinalize(this);
     }
 }
