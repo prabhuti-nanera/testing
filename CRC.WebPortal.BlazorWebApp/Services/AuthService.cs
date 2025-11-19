@@ -58,6 +58,19 @@ public class AuthService : IAuthService
 
     private async Task<AuthResponse> ExecuteAuthRequestAsync<T>(string endpoint, T data, string defaultErrorMessage)
     {
+<<<<<<< HEAD
+=======
+        return await ExecuteAuthRequestAsync("api/auth/signup", signupData, "Registration failed. Please try again.");
+    }
+
+    public async Task<AuthResponse> SignInAsync(SigninData signinData)
+    {
+        return await ExecuteAuthRequestAsync("api/auth/signin", signinData, "Sign in failed. Please try again.");
+    }
+
+    private async Task<AuthResponse> ExecuteAuthRequestAsync<T>(string endpoint, T data, string defaultErrorMessage)
+    {
+>>>>>>> d23dd02d994b72794089ec06b4a4ea15d34e4ff1
         try
         {
             var response = await _httpClient.PostAsJsonAsync(endpoint, data);
@@ -71,8 +84,11 @@ public class AuthService : IAuthService
                     await _localStorage.SetItemAsync(TokenKey, result.Token);
                     if (_authStateProvider is CustomAuthStateProvider customProvider && result.User != null)
                     {
+<<<<<<< HEAD
                         // Ensure authentication state change happens after token is stored
                         await Task.Delay(50); // Small delay to ensure localStorage is updated
+=======
+>>>>>>> d23dd02d994b72794089ec06b4a4ea15d34e4ff1
                         customProvider.NotifyAuthenticationStateChanged(result.User);
                     }
                 }
@@ -106,4 +122,8 @@ public class AuthService : IAuthService
         }
     }
 
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> d23dd02d994b72794089ec06b4a4ea15d34e4ff1

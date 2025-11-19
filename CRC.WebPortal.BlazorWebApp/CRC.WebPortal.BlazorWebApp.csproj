@@ -24,9 +24,12 @@
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="10.0.0-rc.1.25451.107" PrivateAssets="all" />
   </ItemGroup>
 
+<<<<<<< HEAD
   <ItemGroup>
     <ProjectReference Include="..\CRC.Common\CRC.Common.csproj" />
     <ProjectReference Include="..\CRC.WebPortal.Shared\CRC.WebPortal.Shared.csproj" />
   </ItemGroup>
 
+=======
+>>>>>>> d23dd02d994b72794089ec06b4a4ea15d34e4ff1
 </Project>
